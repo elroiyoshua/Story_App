@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">StoryBaru</string>
+    <string name="errorpass">Password harus lebih dari 6 characters</string>
+    <string name="erroremail">Invalid Email</string>
+</resources>
