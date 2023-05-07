@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">StoryBaru</string>
-    <string name="errorpass">Password harus lebih dari 6 characters</string>
+    <string name="errorpass">Password must be more than 8 characters</string>
     <string name="erroremail">Invalid Email</string>
+    <string name="errorregister">Register Failed</string>
+    <string name="register">Register Succes</string>
+    <string name="errorlogin">Login Failed</string>
+    <string name="login">Login Succes</string>
+    <string name="errorgetallstories">Failed to get Stories</string>
 </resources>

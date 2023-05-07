@@ -6,7 +6,6 @@ import com.example.storybaru.repositories.Repository
 import kotlinx.coroutines.Dispatchers
 
 class RegisterViewModel(private val repository: Repository) : ViewModel() {
-    fun getUserLogin(email : String,password : String) = repository.getUserLogin(email, password)
+    fun saveUserRegister(name: String, email: String, password: String) = repository.saveUserRegister(name, email, password)
 
-    fun getToken() = repository.getToken().asLiveData(Dispatchers.IO)
 }

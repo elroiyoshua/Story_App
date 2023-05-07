@@ -38,7 +38,7 @@ class EditPassword : AppCompatEditText {
         })
     }
     companion object {
-        private const val MIN_LENGTH = 6
+        private const val MIN_LENGTH = 8
     }
 
 

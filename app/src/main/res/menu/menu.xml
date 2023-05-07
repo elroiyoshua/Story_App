@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/addstory"
+        android:title="Add New Story"
+        app:showAsAction="always"
+        android:icon="@drawable/baseline_add_circle_24"
+    />
+    <item
+        android:title="Setting"
+        app:showAsAction="always"
+        android:icon="@drawable/baseline_language_24"
+        />
+    <item
+        android:id="@+id/logout"
+        app:showAsAction="always"
+        android:title="Logout"
+        android:icon="@drawable/baseline_logout_24"
+        />
+</menu>

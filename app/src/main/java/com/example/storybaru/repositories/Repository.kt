@@ -5,6 +5,7 @@ import androidx.lifecycle.liveData
 import com.example.storybaru.Data.AuthDataStore
 import com.example.storybaru.Data.LocaleDataStore
 import com.example.storybaru.api.ApiService
+import com.example.storybaru.responses.AllStoriesResponses
 import com.example.storybaru.responses.LoginResponse
 import com.example.storybaru.responses.RegisterResponse
 import kotlinx.coroutines.Dispatchers
@@ -27,6 +28,14 @@ class Repository (
         authDataStore.clearToken()
     }
 
+    private fun generateBearerToken(token: String):String{
+        return if (token.contains("bearer",true)){
+            token
+        }else{
+            "Bearer $token"
+        }
+    }
+
     fun getLocale(): Flow<String> = localeDataStore.getLocaleSetting()
 
     suspend fun saveLocale(locale: String) {
@@ -45,11 +54,7 @@ class Repository (
             }
         }
 
-    fun saveUserRegister(
-        name: String,
-        email: String,
-        password: String
-    ): LiveData<Result<RegisterResponse>> = liveData(Dispatchers.IO) {
+    fun saveUserRegister(name: String, email: String, password: String): LiveData<Result<RegisterResponse>> = liveData(Dispatchers.IO) {
         emit(Result.Loading)
         try {
             val response = apiService.register(name, email, password)
@@ -59,10 +64,21 @@ class Repository (
         }
     }
 
+    fun getAllStories(token: String):LiveData<com.example.storybaru.repositories.Result<AllStoriesResponses>> = liveData(Dispatchers.IO){
+        emit(com.example.storybaru.repositories.Result.Loading)
+
+        try{
+            val response = apiService.getAllStories(generateBearerToken(token))
+            emit(com.example.storybaru.repositories.Result.Success(response))
+        }catch (e : Exception){
+            emit(com.example.storybaru.repositories.Result.Error(e.message.toString()))
+        }
+
+    }
+
     companion object{
         @Volatile
         private var instance : Repository? = null
-
         fun getInstance(apiService: ApiService,authDataStore: AuthDataStore,localeDataStore: LocaleDataStore):Repository = instance ?: synchronized(this){
             instance ?:Repository(apiService,authDataStore,localeDataStore)
         }.also { instance = it }
