@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".feature.register.Register">
 
+    <ImageView
+        android:id="@+id/welcomeregis"
+        android:layout_width="315dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="108dp"
+        android:src="@drawable/welcome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ProgressBar
         android:id="@+id/progressregister"
         android:layout_width="wrap_content"
@@ -18,6 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/judul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,33 +41,36 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:textColorHint="@color/black"
         android:id="@+id/namaRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="Masukan Nama"
+        android:hint="@string/nameregister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/judul" />
 
     <com.example.storybaru.CustomView.EditEmail
+        android:textColorHint="@color/black"
         android:id="@+id/emailRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="11dp"
-        android:hint="Masukan Email"
+        android:hint="Email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/namaRegister" />
 
     <com.example.storybaru.CustomView.EditPassword
+        android:textColorHint="@color/black"
         android:id="@+id/passwordRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Masukkan Password"
+        android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -64,6 +78,8 @@
         app:layout_constraintTop_toBottomOf="@+id/emailRegister" />
 
     <Button
+        android:textColor="@color/white"
+        android:backgroundTint="@color/black"
         android:id="@+id/registerButton"
         android:layout_width="238dp"
         android:layout_height="37dp"
@@ -80,25 +96,26 @@
         android:id="@+id/toLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="144dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="126dp"
         android:layout_marginBottom="104dp"
         android:text="Login"
-        android:textColor="@color/purple_700"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView3" />
 
     <TextView
-
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
 
-        android:layout_marginStart="68dp"
-        android:layout_marginEnd="6dp"
+        android:layout_marginEnd="7dp"
         android:layout_marginBottom="104dp"
-        android:text="Already have an account?"
+        android:text="@string/registerhaveaccount"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/toLogin"
         app:layout_constraintStart_toStartOf="parent" />

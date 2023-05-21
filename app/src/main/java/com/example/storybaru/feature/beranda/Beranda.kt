@@ -3,6 +3,7 @@ package com.example.storybaru.feature.beranda
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.storybaru.R
 import com.example.storybaru.ViewModelFactory
 import com.example.storybaru.databinding.ActivityBerandaBinding
+import com.example.storybaru.feature.addstory.AddStory
+import com.example.storybaru.feature.detail.Detail
 import com.example.storybaru.feature.login.Login
 import com.example.storybaru.responses.ListStoryItem
 
@@ -53,8 +56,6 @@ class Beranda : AppCompatActivity() {
             }
 
         }
-
-
         setContentView(binding.root)
     }
 
@@ -66,9 +67,18 @@ class Beranda : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
+            R.id.mapmenu->{
+                val intent = Intent(this@Beranda,com.example.storybaru.feature.maps.Map::class.java)
+                startActivity(intent)
+            }
             R.id.logout->{
                 berandaViewModel.clearToken()
                 backToLogin()
+            }R.id.addstory->{
+                val intent = Intent(this@Beranda,AddStory::class.java)
+                startActivity(intent)
+            }R.id.changelanguage->{
+                startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
             }
         }
         return super.onOptionsItemSelected(item)
@@ -81,6 +91,13 @@ class Beranda : AppCompatActivity() {
     }
     private fun setAllStories(data : List<ListStoryItem>){
         val adapter = BerandaAdapter(data)
+        adapter.setOnItemClick(object  : BerandaAdapter.OnItemClick{
+            override fun onItemClicked(data: ListStoryItem) {
+                val intent = Intent(this@Beranda,Detail::class.java)
+                intent.putExtra(ID,data.id)
+                startActivity(intent)
+            }
+        })
         binding.recyclerView.adapter = adapter
     }
 
@@ -92,5 +109,9 @@ class Beranda : AppCompatActivity() {
         }
     }
 
-
+    companion object{
+        const val ID = "id"
+    }
 }
+
+

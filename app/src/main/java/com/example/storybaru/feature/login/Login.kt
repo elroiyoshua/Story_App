@@ -1,5 +1,6 @@
 package com.example.storybaru.feature.login
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,6 +22,7 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
+        supportActionBar?.hide()
         setContentView(binding.root)
         val view : ViewModelFactory = ViewModelFactory.getInstance(this)
         val loginview : LoginViewModel by viewModels {view}
@@ -34,6 +36,8 @@ class Login : AppCompatActivity() {
         }
         binding.apply {
 
+
+
             loginbutton.setOnClickListener {
                 onClickButtonLogin()
             }
@@ -43,6 +47,7 @@ class Login : AppCompatActivity() {
                 onClicktoRegister()
             }
         }
+        showAnimation()
 
     }
 
@@ -52,25 +57,28 @@ class Login : AppCompatActivity() {
 
         val emailValue = binding.emaillogin.text.toString().trim()
         val passwordValue = binding.passwordlogin.text.toString().trim()
-
-        loginViewModel.getUserLogin(emailValue,passwordValue).observe(this@Login){login->
-            when (login){
-
-                is com.example.storybaru.repositories.Result.Loading ->{
-                    showLoading(true)
-                }
-                is com.example.storybaru.repositories.Result.Success ->{
-                    Toast.makeText(this@Login,R.string.login,Toast.LENGTH_SHORT).show()
-                    showLoading(false)
-                    toBeranda()
-                }
-                is com.example.storybaru.repositories.Result.Error->{
-                    Toast.makeText(this@Login,R.string.errorlogin,Toast.LENGTH_SHORT).show()
-                    showLoading(false)
+        if(passwordValue.length < 8){
+            Toast.makeText(this@Login,R.string.errorlogin,Toast.LENGTH_SHORT).show()
+            showLoading(false)
+            }
+        else{
+            loginViewModel.getUserLogin(emailValue,passwordValue).observe(this@Login){login->
+                when (login){
+                    is com.example.storybaru.repositories.Result.Loading ->{
+                        showLoading(true)
+                    }
+                    is com.example.storybaru.repositories.Result.Success ->{
+                        Toast.makeText(this@Login,R.string.login,Toast.LENGTH_SHORT).show()
+                        showLoading(false)
+                        toBeranda()
+                    }
+                    is com.example.storybaru.repositories.Result.Error->{
+                        Toast.makeText(this@Login,R.string.errorlogin,Toast.LENGTH_SHORT).show()
+                        showLoading(false)
+                    }
                 }
             }
         }
-
     }
 
     private fun toBeranda(){
@@ -91,5 +99,13 @@ class Login : AppCompatActivity() {
             binding.progresslogin.visibility = View.INVISIBLE
         }
     }
+    private fun showAnimation() {
+        ObjectAnimator.ofFloat(binding.welcomelogin, View.TRANSLATION_X, -75f, 75f).apply {
+            duration = 5000
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+        }.start()
+    }
+
 
 }

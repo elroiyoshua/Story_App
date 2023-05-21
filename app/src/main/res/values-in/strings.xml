@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">StoryApp</string>
+    <string name="errorpass">Password harus lebih dari 8 karakter</string>
+    <string name="erroremail">Email Salah</string>
+    <string name="errorregister">Register Gagal</string>
+    <string name="register">Register Sukses</string>
+    <string name="errorlogin">Login Gagal</string>
+    <string name="login">Login Sukses</string>
+    <string name="errorgetallstories">Gagal mendapatkan stori</string>
+    <string name="errorgetdetail">Gagal mendapatkan detail stori</string>
+    <string name="detaildesc">loading deskripsi</string>
+    <string name="errordesc">\"Tolong isi deskripsi sebelum menambahkan story \"</string>
+    <string name="errorimage">\"Tolong masukan image file terlebih dahulu \"</string>
+    <string name="uploadwait">Mohon Tunggu</string>
+    <string name="succesaddstory">Berhasil menambahkan stori</string>
+    <string name="failedaddstory">Gagal menambahkan stori</string>
+    <string name="add_story">Tambah Stori</string>
+    <string name="camera">Kamera</string>
+    <string name="nothaveaccount">Belum punya akun?</string>
+    <string name="register_account">Register akun</string>
+    <string name="nameregister">Nama</string>
+    <string name="registerhaveaccount">Sudah punya akun?</string>
+    <string name="gallery">Galeri</string>
+    <string name="enter_desctription_here">Masukkan deskipsi disini</string>
+    <string name="loading_username">Loading Username</string>
+    <string name="normal_type">Normal</string>
+    <string name="satellite_type">Satellite</string>
+    <string name="terrain_type">Terrain</string>
+    <string name="hybrid_type">Hybrid</string>
+    <string name="location_failed">Gagal Mendapatkan Lokasi</string>
+</resources>

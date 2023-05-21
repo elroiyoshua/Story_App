@@ -2,20 +2,27 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/mapmenu"
+        android:title="Map"
+        app:showAsAction="always"
+        android:icon="@drawable/map"
+        />
+    <item
         android:id="@+id/addstory"
         android:title="Add New Story"
         app:showAsAction="always"
-        android:icon="@drawable/baseline_add_circle_24"
+        android:icon="@drawable/camera"
     />
     <item
+        android:id="@+id/changelanguage"
         android:title="Setting"
         app:showAsAction="always"
-        android:icon="@drawable/baseline_language_24"
+        android:icon="@drawable/translation"
         />
     <item
         android:id="@+id/logout"
         app:showAsAction="always"
         android:title="Logout"
-        android:icon="@drawable/baseline_logout_24"
+        android:icon="@drawable/poweroff"
         />
 </menu>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">StoryBaru</string>
+    <string name="app_name">StoryApp</string>
     <string name="errorpass">Password must be more than 8 characters</string>
     <string name="erroremail">Invalid Email</string>
     <string name="errorregister">Register Failed</string>
@@ -7,4 +7,25 @@
     <string name="errorlogin">Login Failed</string>
     <string name="login">Login Succes</string>
     <string name="errorgetallstories">Failed to get Stories</string>
+    <string name="errorgetdetail">Failed to get Detail Story</string>
+    <string name="detaildesc"> Loading Description</string>
+    <string name="errordesc">\"Please write your description before adding story \"</string>
+    <string name="errorimage">\"Please insert a file image first \"</string>
+    <string name="uploadwait">Please Wait</string>
+    <string name="succesaddstory">Succes adding story</string>
+    <string name="failedaddstory">Failed to add story</string>
+    <string name="add_story">Add Story</string>
+    <string name="camera">Camera</string>
+    <string name="nothaveaccount">Didn\'t have an account?</string>
+    <string name="register_account">Register account</string>
+    <string name="nameregister">Name</string>
+    <string name="registerhaveaccount">Already have an account?</string>
+    <string name="gallery">Gallery</string>
+    <string name="enter_desctription_here">Enter Desctription Here</string>
+    <string name="loading_username">Loading Username</string>
+    <string name="normal_type">Normal</string>
+    <string name="satellite_type">Satellite</string>
+    <string name="terrain_type">Terrain</string>
+    <string name="hybrid_type">Hybrid</string>
+    <string name="location_failed">Failed to get location</string>
 </resources>
