@@ -37,24 +37,9 @@ class Beranda : AppCompatActivity() {
 
         }
         berandaViewModel.getToken().observe(this){token->
-            if(token != null){
-                berandaViewModel.getAllStories(token).observe(this){
-                    when(it){
-                        is com.example.storybaru.repositories.Result.Loading ->{
-                            showLoading(true)
-                        }
-                        is com.example.storybaru.repositories.Result.Success -> {
-                            setAllStories(it.data.listStory)
-                            showLoading(false)
-                        }
-                        is com.example.storybaru.repositories.Result.Error ->{
-                            Toast.makeText(this@Beranda,R.string.errorgetallstories, Toast.LENGTH_SHORT).show()
-                            showLoading(true)
-                        }
-                    }
-                }
+            if (token != null){
+                setAllStories(berandaViewModel,token)
             }
-
         }
         setContentView(binding.root)
     }
@@ -89,8 +74,8 @@ class Beranda : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-    private fun setAllStories(data : List<ListStoryItem>){
-        val adapter = BerandaAdapter(data)
+    private fun setAllStories(berandaViewModel: BerandaViewModel,token:String){
+        val adapter = BerandaAdapter()
         adapter.setOnItemClick(object  : BerandaAdapter.OnItemClick{
             override fun onItemClicked(data: ListStoryItem) {
                 val intent = Intent(this@Beranda,Detail::class.java)
@@ -99,15 +84,12 @@ class Beranda : AppCompatActivity() {
             }
         })
         binding.recyclerView.adapter = adapter
+        berandaViewModel.getAllStories(token).observe(this,{
+            adapter.submitData(lifecycle,it)
+        })
     }
 
-    private fun showLoading(isLoading : Boolean){
-        if (isLoading){
-            binding.progressberanda.visibility = View.VISIBLE
-        }else{
-            binding.progressberanda.visibility = View.INVISIBLE
-        }
-    }
+
 
     companion object{
         const val ID = "id"

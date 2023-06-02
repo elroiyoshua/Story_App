@@ -2,8 +2,13 @@ package com.example.storybaru.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.example.storybaru.Data.AuthDataStore
 import com.example.storybaru.api.ApiService
+import com.example.storybaru.paging.StoryPagingSource
 import com.example.storybaru.responses.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -57,16 +62,10 @@ class Repository (
         }
     }
 
-    fun getAllStories(token: String):LiveData<com.example.storybaru.repositories.Result<AllStoriesResponses>> = liveData(Dispatchers.IO){
-        emit(com.example.storybaru.repositories.Result.Loading)
-
-        try{
-            val response = apiService.getAllStories(generateBearerToken(token))
-            emit(com.example.storybaru.repositories.Result.Success(response))
-        }catch (e : Exception){
-            emit(com.example.storybaru.repositories.Result.Error(e.message.toString()))
-        }
-
+    fun getAllStories(token: String) : LiveData<PagingData<ListStoryItem>>{
+        return Pager(
+            config = PagingConfig(pageSize = 5), pagingSourceFactory = {StoryPagingSource(apiService,generateBearerToken(token))}
+        ).liveData
     }
     fun getDetailStories(token: String,id : String):LiveData<com.example.storybaru.repositories.Result<DetailStoryResponses>> =
         liveData(Dispatchers.IO){
