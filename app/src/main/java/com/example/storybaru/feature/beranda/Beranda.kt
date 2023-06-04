@@ -9,12 +9,14 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.storybaru.R
 import com.example.storybaru.ViewModelFactory
 import com.example.storybaru.databinding.ActivityBerandaBinding
 import com.example.storybaru.feature.addstory.AddStory
+import com.example.storybaru.feature.beranda.loading.LoadingStoryAdapter
 import com.example.storybaru.feature.detail.Detail
 import com.example.storybaru.feature.login.Login
 import com.example.storybaru.responses.ListStoryItem
@@ -83,7 +85,11 @@ class Beranda : AppCompatActivity() {
                 startActivity(intent)
             }
         })
-        binding.recyclerView.adapter = adapter
+        binding.recyclerView.adapter = adapter.withLoadStateFooter(
+            footer = LoadingStoryAdapter{
+                adapter.retry()
+            }
+        )
         berandaViewModel.getAllStories(token).observe(this,{
             adapter.submitData(lifecycle,it)
         })
