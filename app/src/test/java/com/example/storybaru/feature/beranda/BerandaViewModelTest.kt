@@ -55,9 +55,9 @@ class BerandaViewModelTest{
             workerDispatcher = Dispatchers.Main
         )
         differ.submitData(actualStory)
-        Assert.assertNotNull(differ.snapshot())
-        Assert.assertEquals(dummyStory.size, differ.snapshot().size)
-        Assert.assertEquals(dummyStory[0], differ.snapshot()[0])
+        assertNotNull(differ.snapshot())
+        assertEquals(dummyStory.size, differ.snapshot().size)
+        assertEquals(dummyStory[0], differ.snapshot()[0])
     }
     @Test
     fun `Ketika mengambil story null dan tidak mengembalikan data`() = runTest {
@@ -74,7 +74,7 @@ class BerandaViewModelTest{
             workerDispatcher = Dispatchers.Main,
         )
         differ.submitData(actualQuote)
-        Assert.assertEquals(0, differ.snapshot().size)
+        assertEquals(0, differ.snapshot().size)
     }
     val noopListUpdateCallback = object : ListUpdateCallback {
         override fun onInserted(position: Int, count: Int) {}

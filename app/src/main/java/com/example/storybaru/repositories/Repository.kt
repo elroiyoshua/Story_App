@@ -67,33 +67,33 @@ class Repository (
             config = PagingConfig(pageSize = 5), pagingSourceFactory = {StoryPagingSource(apiService,generateBearerToken(token))}
         ).liveData
     }
-    fun getDetailStories(token: String,id : String):LiveData<com.example.storybaru.repositories.Result<DetailStoryResponses>> =
+    fun getDetailStories(token: String,id : String):LiveData<Result<DetailStoryResponses>> =
         liveData(Dispatchers.IO){
-            emit(com.example.storybaru.repositories.Result.Loading)
+            emit(Result.Loading)
             try {
                 val response = apiService.getDetailStory(generateBearerToken(token),id)
-                emit(com.example.storybaru.repositories.Result.Success(response))
+                emit(Result.Success(response))
             }catch (e:Exception){
-                emit(com.example.storybaru.repositories.Result.Error(e.message.toString()))
+                emit(Result.Error(e.message.toString()))
             }
         }
 
-    fun addStory(token: String,description : String,image : MultipartBody.Part) : LiveData<com.example.storybaru.repositories.Result<AddStoryResponses>> = liveData(Dispatchers.IO){
-        emit(com.example.storybaru.repositories.Result.Loading)
+    fun addStory(token: String,description : String,image : MultipartBody.Part) : LiveData<Result<AddStoryResponses>> = liveData(Dispatchers.IO){
+        emit(Result.Loading)
         try {
             val response = apiService.addStory(generateBearerToken(token),description.toRequestBody("text/plain".toMediaType()),image)
-            emit(com.example.storybaru.repositories.Result.Success(response))
+            emit(Result.Success(response))
         }catch (e : Exception){
-            emit(com.example.storybaru.repositories.Result.Error(e.message.toString()))
+            emit(Result.Error(e.message.toString()))
         }
     }
-    fun getLocation(token: String):LiveData<com.example.storybaru.repositories.Result<AllStoriesResponses>> = liveData(Dispatchers.IO){
-        emit(com.example.storybaru.repositories.Result.Loading)
+    fun getLocation(token: String):LiveData<Result<AllStoriesResponses>> = liveData(Dispatchers.IO){
+        emit(Result.Loading)
         try {
             val response = apiService.getLocation(generateBearerToken(token), location = 1)
-            emit(com.example.storybaru.repositories.Result.Success(response))
+            emit(Result.Success(response))
         }catch (e:Exception){
-            emit(com.example.storybaru.repositories.Result.Error(e.message.toString()))
+            emit(Result.Error(e.message.toString()))
         }
     }
 

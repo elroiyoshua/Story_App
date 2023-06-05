@@ -17,7 +17,7 @@ class BerandaAdapter:PagingDataAdapter<ListStoryItem,BerandaAdapter.ViewHolder>(
     inner class ViewHolder(private val binding :ItemRowBinding ) : RecyclerView.ViewHolder(binding.root){
         fun bind(stories : ListStoryItem){
             binding.root.setOnClickListener {
-                onItemClick!!.onItemClicked(stories)
+                onItemClick.onItemClicked(stories)
             }
             binding.apply {
                 Glide.with(itemView).load(stories.photoUrl).into(liststoryphoto)

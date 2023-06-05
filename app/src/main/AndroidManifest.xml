@@ -33,7 +33,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBvqwGhKac5FvA4UM8DwwIZwVa4Jwk4BHg" />
+            android:value="Insert Your Google Maps API Here" />
 
         <activity
             android:name=".feature.addstory.AddStory"
