@@ -35,6 +35,7 @@ class BerandaAdapter:PagingDataAdapter<ListStoryItem,BerandaAdapter.ViewHolder>(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = getItem(position)
+
         if(data != null){
             holder.bind(data)
         }

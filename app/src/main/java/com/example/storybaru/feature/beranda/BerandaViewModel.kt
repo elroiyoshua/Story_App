@@ -13,10 +13,7 @@ class BerandaViewModel(private val repository: Repository):ViewModel() {
     fun clearToken(){
         viewModelScope.launch { repository.clearToken() }
     }
-
     fun getToken() = repository.getToken().asLiveData(Dispatchers.IO)
-
-
 
     fun getAllStories(token : String) = repository.getAllStories(token).cachedIn(viewModelScope)
 

@@ -18,17 +18,27 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.531" />
 
-    <ImageView
-        android:id="@+id/imagedetail"
+
+    <androidx.cardview.widget.CardView
+
+android:id="@+id/cardimagedetail"
         android:layout_width="323dp"
         android:layout_height="288dp"
-        android:layout_marginStart="106dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="106dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="25dp"
+        app:cardCornerRadius="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imagedetail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            tools:src="@tools:sample/avatars" />
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:textColor="@color/black"
@@ -42,20 +52,20 @@
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagedetail" />
+        app:layout_constraintTop_toBottomOf="@+id/cardimagedetail" />
 
     <TextView
-        android:textColor="@color/black"
         android:id="@+id/descdetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/detaildesc"
+        android:textColor="@color/black"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.175"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernamedetail"
-        app:layout_constraintVertical_bias="0.058" />
+        app:layout_constraintVertical_bias="0.059" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

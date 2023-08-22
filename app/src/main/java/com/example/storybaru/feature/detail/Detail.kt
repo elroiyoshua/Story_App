@@ -27,8 +27,6 @@ class Detail : AppCompatActivity() {
         val  id = intent.getStringExtra(ID)
         setContentView(binding.root)
 
-
-
         detailViewModel.apply {
             getToken().observe(this@Detail){token ->
                 if(token != null && id!= null){
